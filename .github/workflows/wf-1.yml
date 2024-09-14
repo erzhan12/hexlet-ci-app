@@ -1,0 +1,18 @@
+# Пример для проекта на Node.js
+name: wf-1
+on: push
+jobs:
+  build: # имя взято для примера
+    runs-on: ubuntu-latest
+
+    steps:
+      # Клонируем репозиторий
+      - uses: actions/checkout@v4
+      # Устанавливаем Node.js
+      - uses: actions/setup-node@v4
+      # Ставим зависимости
+      - run: npm install
+      # Запускаем линтер
+      - run: make setup
+      - run: make test
+      - run: make lint
